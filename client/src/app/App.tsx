@@ -1,11 +1,12 @@
 import React from 'react';
-import HelloPage from '../pages/HelloPage/HelloPage';
+import AppProvider from "./provider/AppProvider.tsx";
+import RouterProvider from "./routes/RouterProvider.tsx";
 
 function App(): React.JSX.Element {
   return (
-    <div>
-      <HelloPage />
-    </div>
+      <AppProvider>
+          <RouterProvider/>
+      </AppProvider>
   );
 }
 
