@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AuthResponseT } from '../types/authType';
-import { authFormSchema } from '../schemas/authFormSchemas';
+import { AuthResponseT, LoginT } from '../types/authType';
+import { authFormSchema, loginFormSchema } from '../schemas/authFormSchemas';
 import authService from '../../api/authService';
 
 export const signup = createAsyncThunk<AuthResponseT, FormData, { rejectValue: string }>(
@@ -16,18 +16,17 @@ export const signup = createAsyncThunk<AuthResponseT, FormData, { rejectValue: s
   },
 );
 
-export const login = createAsyncThunk<AuthResponseT, FormData, { rejectValue: string }>(
+export const login = createAsyncThunk<AuthResponseT, FormData>(
   'auth/login',
-  async (formData: FormData, { rejectWithValue }) => {
+  async (formData: FormData) => {
     try {
-      const data = authFormSchema.parse(Object.fromEntries(formData));
+      const data = loginFormSchema.parse(Object.fromEntries(formData));
       return await authService.login(data);
     } catch (error) {
       console.log(error);
-      return rejectWithValue('Ошибка входа');
     }
   },
-)
+);
 
 export const refresh = createAsyncThunk('auth/refresh', () => authService.refresh());
 export const logout = createAsyncThunk('auth/logout', () => authService.logout());

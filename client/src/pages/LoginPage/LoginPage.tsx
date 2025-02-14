@@ -1,10 +1,12 @@
 import React from 'react';
 import { useAppDispatch } from '../../shared/api/lib/hooks';
 import { login } from '../../features/auth/model/redux/authThunk';
-import '../SignUpPage/SignUp.css'
+import '../SignUpPage/SignUp.css';
+import { useNavigate } from 'react-router';
 
 export default function LoginPage(): React.JSX.Element {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   return (
     <div className="bod">
       <form
@@ -13,8 +15,8 @@ export default function LoginPage(): React.JSX.Element {
           e.preventDefault();
           dispatch(login(new FormData(e.currentTarget)))
             .unwrap()
-            .then((data) => console.log(data.user.name))
-            .catch((error: unknown) => console.log(error));
+            .then((data) => console.log(data.user.name));
+          navigate('/').catch((error: unknown) => console.log(error));
         }}
       >
         <h3>Login</h3>

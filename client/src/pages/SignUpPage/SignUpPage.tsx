@@ -2,12 +2,12 @@ import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../shared/api/lib/hooks';
 import { signup } from '../../features/auth/model/redux/authThunk';
 import { useNavigate } from 'react-router';
-import './Sign.css';
+import './SignUp.css';
 
-export default function SignUpPage():React.JSX.Element {
-    const dispatch = useAppDispatch();
-    const navigate = useNavigate();
-    const status = useAppSelector((store) => store.auth.status)
+export default function SignUpPage(): React.JSX.Element {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   return (
     <div className="bod">
       <form
@@ -25,7 +25,6 @@ export default function SignUpPage():React.JSX.Element {
             });
         }}
       >
-        <h4>{status}</h4>
         <h3>Sign Up</h3>
         <input type="text" placeholder="Name" name="name" />
         <input type="text" placeholder="Email" name="email" />
