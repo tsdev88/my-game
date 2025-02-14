@@ -1,7 +1,6 @@
 'use strict';
 
 const bcrypt = require('bcrypt');
-const {password} = require("pg/lib/native");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
