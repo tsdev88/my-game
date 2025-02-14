@@ -1,62 +1,64 @@
 body {
-  background: linear-gradient(135deg, #00008b, #0000ff);
-  color: white;
-  font-family: 'Arial', sans-serif;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    background: url(https://cdn.culture.ru/images/88986a27-bb65-5ea0-a9cf-13df3554ab16);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .title {
-  font-size: 48px;
-  font-weight: bold;
-  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-  margin-bottom: 20px;
+    font-size: 48px;
+    font-weight: bold;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
 }
 
 .container {
-  background: linear-gradient(180deg, #ffd700, #ffcc00);
-  border: 5px solid black;
-  max-width: 600px;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
-  animation: fadeIn 1s ease-in-out;
+    background: linear-gradient(180deg, #ffd700, #ffcc00);
+    border: 5px solid black;
+    max-width: 600px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1s ease-in-out;
 }
 
 .button {
-  background: linear-gradient(180deg, #ff0000, #cc0000);
-  color: white;
-  font-size: 22px;
-  font-weight: bold;
-  border: none;
-  padding: 12px 25px;
-  margin-top: 20px;
-  cursor: pointer;
-  border-radius: 8px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
+    background: linear-gradient(180deg, #ff0000, #cc0000);
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    border: none;
+    padding: 12px 25px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
 }
 
 .button:hover {
-  background: linear-gradient(180deg, #cc0000, #990000);
-  transform: scale(1.05);
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(180deg, #cc0000, #990000);
+    transform: scale(1.05);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
 }
 
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
