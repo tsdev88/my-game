@@ -1,13 +1,22 @@
 import React from 'react';
 import {Route, Routes} from "react-router";
-import MainPage from "../../pages/ui/MainPage.tsx";
-import ModalQuestion from "../../widgets/ui/ModalQuestion/ModalQuestion.tsx";
+import MainPage from '../../pages/ui/MainPage.tsx';
+import HelloPage from '../../pages/HelloPage/HelloPage.tsx';
+import NotFaundPage from '../../pages/NotFaundPages/NotFaundPage.tsx';
+import SignUpPage from '../../pages/SignUpPage/SignUpPage.tsx';
+import LoginPage from '../../pages/LoginPage/LoginPage.tsx';
+import Layout from '../Layout.tsx';
 
 export default function RouterProvider(): React.JSX.Element {
     return (
-        <Routes>
-            <Route path="/" element={<MainPage/>}/>
-            <Route path='/modal' element={<ModalQuestion/>}/>
-        </Routes>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/hello" element={<HelloPage />} />
+          <Route path="*" element={<NotFaundPage />} />
+        </Route>
+      </Routes>
     );
 }
