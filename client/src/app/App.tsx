@@ -1,10 +1,12 @@
 import React from 'react';
+import AppProvider from "./provider/AppProvider.tsx";
+import RouterProvider from "./routes/RouterProvider.tsx";
 
 function App(): React.JSX.Element {
   return (
-    <div>
-        App
-    </div>
+      <AppProvider>
+          <RouterProvider/>
+      </AppProvider>
   );
 }
 
