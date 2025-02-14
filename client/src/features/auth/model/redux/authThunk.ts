@@ -16,4 +16,18 @@ export const signup = createAsyncThunk<AuthResponseT, FormData, { rejectValue: s
   },
 );
 
+export const login = createAsyncThunk<AuthResponseT, FormData, { rejectValue: string }>(
+  'auth/login',
+  async (formData: FormData, { rejectWithValue }) => {
+    try {
+      const data = authFormSchema.parse(Object.fromEntries(formData));
+      return await authService.login(data);
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue('Ошибка входа');
+    }
+  },
+)
+
 export const refresh = createAsyncThunk('auth/refresh', () => authService.refresh());
+export const logout = createAsyncThunk('auth/logout', () => authService.logout());
