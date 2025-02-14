@@ -1,12 +1,10 @@
-import { AuthSliceT } from "../types/authType";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { createSlice } from "@reduxjs/toolkit";
-import { refresh, signup } from "./authThunk";
+import type {AuthSliceT} from "../types/authType";
+import type {PayloadAction} from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
+import {refresh, signup} from "./authThunk";
 
 
-
-
-const initialState: AuthSliceT ={
+const initialState: AuthSliceT = {
     status: 'logging',
     userData: null,
     accessToken: '',
@@ -18,7 +16,7 @@ export const authSlice = createSlice({
     initialState,
     reducers: {
         setAccessToken(state, action: PayloadAction<string>) {
-        state.accessToken = action.payload
+            state.accessToken = action.payload
         },
         clearAccessToken(state) {
             state.accessToken = '';
@@ -26,8 +24,8 @@ export const authSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(signup.fulfilled, (state, action) => {
-            state.status = 'logging',
-            state.accessToken = action.payload.accesToken;
+            state.status = 'logging';
+            state.accessToken = action.payload.accessToken;
             state.userData = action.payload.user;
         });
         builder.addCase(signup.rejected, (state, action) => {
@@ -38,7 +36,7 @@ export const authSlice = createSlice({
         });
         builder.addCase(refresh.fulfilled, (state, action) => {
             state.status = 'logged';
-            state.accessToken = action.payload.accesToken;
+            state.accessToken = action.payload.accessToken;
             state.userData = action.payload.user;
         });
         builder.addCase(refresh.rejected, (state, action) => {
@@ -53,4 +51,4 @@ export const authSlice = createSlice({
 
 export default authSlice.reducer;
 
-export const { clearAccessToken, setAccessToken} = authSlice.actions;
+export const {clearAccessToken, setAccessToken} = authSlice.actions;

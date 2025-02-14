@@ -9,14 +9,14 @@ import Layout from '../Layout.tsx';
 
 export default function RouterProvider(): React.JSX.Element {
     return (
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/hello" element={<HelloPage />} />
-          <Route path="*" element={<NotFaundPage />} />
-        </Route>
-      </Routes>
+        <Routes>
+            <Route element={<Layout/>}>
+                <Route path="/" element={<HelloPage/>}/>
+                <Route path="/signup" element={<SignUpPage/>}/>
+                <Route path="/login" element={<LoginPage/>}/>
+                <Route path="/main" element={<MainPage/>}/>
+                <Route path="*" element={<NotFaundPage/>}/>
+            </Route>
+        </Routes>
     );
 }

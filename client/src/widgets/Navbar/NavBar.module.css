@@ -1,0 +1,26 @@
+.container {
+    background: #0567ff;
+    box-shadow: 1px 1px 15px black;
+    width: 100vw;
+}
+
+.list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.oneLink {
+    text-decoration: none;
+    color: white;
+    font-size: 50px;
+}
+
+.btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 50px;
+}

@@ -1,25 +1,25 @@
 import React from 'react';
 import styles from './ModalQuestion.module.css'
 import {Bounce, toast, ToastContainer} from "react-toastify";
+import {setSelected} from "../../../entities/category/model/redux/categorySlice.ts";
+import {useAppDispatch, useAppSelector} from "../../../shared/api/lib/hook.ts";
 
-// Моковые данные, удалить и вставить данные с бд
-const mockQuestion = {
-    question: "Кто написал 'Лунную сонату'?",
-    answers: "Бах, Бетховен, Моцарт",
-    correctAnswer: "Бетховен",
-    score: 600,
-}
 
-// Переделать полностью компонент, вставить данные с бд
 export default function ModalQuestion(): React.JSX.Element {
 
+    const chosenQuestion = useAppSelector(store => store.category.chosenQuestion)
+
     const notify = () => toast('Ответ неверный, попробуй еще раз');
+    const notify2 = () => toast('Верно!');
 
+    const dispatch = useAppDispatch()
 
+    console.log(chosenQuestion)
     const submit = (e) => {
         e.preventDefault();
-        if (e.target.value === mockQuestion.correctAnswer) {
-            alert('Правильно')
+        if (e.target.value === chosenQuestion.correctAnswer) {
+            dispatch(setSelected(null))
+            alert('Верный ответ')
         } else {
             notify()
         }
@@ -27,49 +27,48 @@ export default function ModalQuestion(): React.JSX.Element {
 
     return (
         <div>
-            <button className={styles.modalBtn}>{mockQuestion.score}</button>
-            {mockQuestion && ( //Снять заглушку
+            {chosenQuestion && (
                 <div className={styles.container}>
                     <div className={styles.modal}>
-                        <h1 className={styles.title}>{mockQuestion.question}</h1>
+                        <h1 className={styles.title}>{chosenQuestion.question}</h1>
                         <form onChange={(e) => submit(e)}>
                             <div className={styles.inputs}>
                                 <div className={styles.inputDiv}>
                                     <h1>1.</h1>
                                     <div>
                                         <input type="radio" name="question"
-                                               value={mockQuestion.answers.split(', ')[0]}
-                                               id={mockQuestion.answers.split(', ')[0]}
+                                               value={chosenQuestion.answers.split(', ')[0]}
+                                               id={chosenQuestion.answers.split(', ')[0]}
                                                className={styles.input}
                                         /><label
-                                        htmlFor={mockQuestion.answers.split(', ')[0]}
-                                        className={styles.label}>{mockQuestion.answers.split(', ')[0]}</label>
+                                        htmlFor={chosenQuestion.answers.split(', ')[0]}
+                                        className={styles.label}>{chosenQuestion.answers.split(', ')[0]}</label>
                                     </div>
                                 </div>
                                 <div className={styles.inputDiv}>
                                     <h1>2.</h1>
                                     <div>
                                         <input type="radio" name="question"
-                                               value={mockQuestion.answers.split(', ')[1]}
-                                               id={mockQuestion.answers.split(', ')[1]}
+                                               value={chosenQuestion.answers.split(', ')[1]}
+                                               id={chosenQuestion.answers.split(', ')[1]}
                                                className={styles.input}
 
                                         /><label
-                                        htmlFor={mockQuestion.answers.split(', ')[1]}
-                                        className={styles.label}>{mockQuestion.answers.split(', ')[1]}</label>
+                                        htmlFor={chosenQuestion.answers.split(', ')[1]}
+                                        className={styles.label}>{chosenQuestion.answers.split(', ')[1]}</label>
                                     </div>
                                 </div>
                                 <div className={styles.inputDiv}>
                                     <h1>3.</h1>
                                     <div>
                                         <input type="radio" name="question"
-                                               value={mockQuestion.answers.split(', ')[2]}
-                                               id={mockQuestion.answers.split(', ')[2]}
+                                               value={chosenQuestion.answers.split(', ')[2]}
+                                               id={chosenQuestion.answers.split(', ')[2]}
                                                className={styles.input}
 
                                         /><label
-                                        htmlFor={mockQuestion.answers.split(', ')[2]}
-                                        className={styles.label}>{mockQuestion.answers.split(', ')[2]}</label>
+                                        htmlFor={chosenQuestion.answers.split(', ')[2]}
+                                        className={styles.label}>{chosenQuestion.answers.split(', ')[2]}</label>
                                     </div>
                                 </div>
                             </div>
@@ -87,6 +86,7 @@ export default function ModalQuestion(): React.JSX.Element {
                             theme="light"
                             transition={Bounce}
                         />
+                        <button onClick={() => dispatch(setSelected(null))} className={styles.closedBtn}>Close</button>
                     </div>
                 </div>
             )}
